@@ -60,10 +60,12 @@ body {
 }
 
 .logo {
-    position: absolute;          /* 🔥 यही missing था */
+    position: absolute;
+    /* 🔥 यही missing था */
     left: 20px;
-    bottom: -22px;   
-    top: 12px;            /* green पट्टी से आधा बाहर */
+    bottom: -22px;
+    top: 12px;
+    /* green पट्टी से आधा बाहर */
     width: 5px;
     height: 5px;
     background: #174137;
@@ -73,8 +75,10 @@ body {
     font-size: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;  /* white ring like sample */
-    z-index: 999;                /* सबके ऊपर */
+    justify-content: center;
+    /* white ring like sample */
+    z-index: 999;
+    /* सबके ऊपर */
 }
 
 
@@ -110,26 +114,28 @@ body {
     height: 45px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 40px;
 
 }
 
 /* PHOTO OVER NAME BAR */
 .photo-overlap {
-  position: absolute;
-  right: 15px;
-  top: -35px;              /* 🔥 yahi overlap karata hai */
-  width: 75px;
-  height: 95px;
-  border: 3px solid #1a5244;
-  background: #fff;
-  overflow: hidden;
+    position: absolute;
+    right: 15px;
+    top: -35px;
+    /* 🔥 yahi overlap karata hai */
+    width: 75px;
+    height: 95px;
+    border: 3px solid #1a5244;
+    background: #fff;
+    overflow: hidden;
 }
 
 .photo-overlap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card-body {
@@ -140,66 +146,56 @@ body {
 }
 
 .left-section {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 4px;
+    width: 120%;
 }
 
 .info-item {
-    margin-bottom: -10px;
+    display: flex;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
 }
 
 .label {
-    font-size: 12px;
-    font-weight: bold;
-    color: #1a5244;
-    margin-bottom: 5px;
-    position: relative;
-    top: -7px;
+    color: #000;
 }
 
 .value {
-    font-size: 13px;
-    font-weight: bold;
-    color: #333;
-    position: relative;
-    left: 80px;
-    bottom: 26px;
+    color: #000;
 }
 
+
 .barcode-container {
-    margin-top: auto;
+    margin-top: -16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;   /* center karega */
+    align-items: center;
+    width: 110%;
 }
 
 .barcode {
-    width: 100%;
-    height: 32px;
-    fill: #000;
-    position: relative;
-    bottom: 5px;
-    opacity: 0.85;
-    right: 100px;
+    width: 150px;
+    height: 40px;
 }
 
 
 .photo-box {
-    width: 110px;
+    width: 95px;
     height: 110px;
-    border: 3px solid #1a5244;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: hidden;
-    background: #f5f5f5;
-    flex-shrink: 0;
-    position: relative;
-    bottom: 10px;
+    border: 3px solid white;
 }
 
 .photo-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #ffffff;
+    object-fit: cover;
 }
 
 .footer {
@@ -263,7 +259,7 @@ body {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .id-card {
         width: 100%;
         max-width: 350px;
@@ -275,12 +271,12 @@ body {
     body {
         background: white;
     }
-    
+
     .card-wrapper {
         flex-direction: row;
         gap: 20px;
     }
-    
+
     .id-card {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
@@ -295,11 +291,12 @@ body {
 
 .photo-box {
     position: absolute;
-    right: 8px;
-    top: 78px;              /* name bar ke upar overlap */
-    width: 90px;
+    right: 10px;
+    top: 75px;
+    /* name bar ke upar overlap */
+    width: 80px;
     height: 110px;
-    border: 3px solid #ffffff;
+    border: 2px solid #ffffff;
     background: #fff;
     z-index: 5;
 }
@@ -321,25 +318,28 @@ body {
     left: -60px;
     width: 200px;
     height: 120px;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.35),
-        transparent
-    );
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.35),
+            transparent);
     transform: rotate(-15deg);
     animation: shineMove 4s linear infinite;
 }
 
 @keyframes shineMove {
-    0% { left: -220px; }
-    100% { left: 420px; }
+    0% {
+        left: -220px;
+    }
+
+    100% {
+        left: 420px;
+    }
 }
 
 .header {
-  background:
-    url("sparkle.png") no-repeat right top,
-    linear-gradient(135deg, #1a5244, #2d6e5e);
+    background:
+        url("sparkle.png") no-repeat right top,
+        linear-gradient(135deg, #1a5244, #2d6e5e);
     position: relative;
     overflow: hidden;
 }
@@ -348,110 +348,115 @@ body {
 /* ===== FINAL LOGO FIX ===== */
 
 .front .header {
-  position: relative;
-  overflow: visible; /* 🔥 IMPORTANT */
+    position: relative;
+    overflow: visible;
+    /* 🔥 IMPORTANT */
 }
 
 .front .logo {
-  position: absolute;
-  left: 18px;        /* logo left se */
-  bottom: -22px;     /* green strip ke upar overlap */
-  width: 43px;
-  height: 43px;
-  border-radius: 50%;
-  background: #174137;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 10px;
-  z-index: 9999;     /* 🔥 SABSE UPAR */
+    position: absolute;
+    left: 18px;
+    /* logo left se */
+    bottom: -22px;
+    /* green strip ke upar overlap */
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: #174137;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10px;
+    z-index: 9999;
+    /* 🔥 SABSE UPAR */
 }
 
 
 
 /* ===== DOWNLOAD MODE FIX ===== */
 .download-mode .id-card {
-  box-shadow: none !important;
-  transform: none !important;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 .download-mode .header::after,
 .download-mode .id-card:hover {
-  animation: none !important;
+    animation: none !important;
 }
 
 .download-mode .barcode {
-  right: 0 !important;
+    right: 0 !important;
 }
 
 .download-mode .value {
-  left: 70px !important;
-  bottom: 24px !important;
+    left: 70px !important;
+    bottom: 24px !important;
 }
 
 .download-mode .photo-box {
-  top: 70px !important;
-  right: 10px !important;
+    top: 70px !important;
+    right: 10px !important;
 }
 
 .download-mode .logo {
-  bottom: -18px !important;
+    bottom: -18px !important;
 }
 
 
 /* ===== FIXED SIZE FOR DOWNLOAD ===== */
 .download-card {
-  width: 1050px;   /* exact ratio */
-  height: 660px;
-  border-radius: 30px;
-  box-shadow: none !important;
-  transform: none !important;
+    width: 1050px;
+    /* exact ratio */
+    height: 660px;
+    border-radius: 30px;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 .download-card * {
-  animation: none !important;
+    animation: none !important;
 }
 
 
 
 /* ===== CLEAN DOWNLOAD MODE ===== */
 .download-card {
-  width: 350px !important;
-  height: 220px !important;
-  box-shadow: none !important;
-  transform: none !important;
+    width: 350px !important;
+    height: 220px !important;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 .download-card * {
-  animation: none !important;
+    animation: none !important;
 }
 
 
 
 /* ===== A4 PDF DOWNLOAD MODE ===== */
 .download-card {
-  width: 350px !important;
-  height: 220px !important;
-  box-shadow: none !important;
-  transform: none !important;
+    width: 350px !important;
+    height: 220px !important;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 .download-card * {
-  animation: none !important;
+    animation: none !important;
 }
 
 
 /* ===== DOWNLOAD PHOTO ALIGNMENT FIX ===== */
 .download-mode .photo-box {
-  position: absolute !important;
-  top: 72px !important;
-  right: 10px !important;
-  width: 90px !important;
-  height: 110px !important;
+    position: absolute !important;
+    top: 72px !important;
+    right: 10px !important;
+    width: 90px !important;
+    height: 110px !important;
 }
 
 .download-mode .photo-box img {
-  object-fit: cover !important;
+    object-fit: cover !important;
 }

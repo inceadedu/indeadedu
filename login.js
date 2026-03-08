@@ -38,28 +38,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-const user = data.user;
+    const user = data.user;
 
-// 🔥 FETCH PROFILE FROM SUPABASE
-const { data: profileData, error: profileError } = await supabase
-  .from("student_profiles")
-  .select("*")
-  .eq("id", user.id)
-  .maybeSingle();
+    // 🔥 FETCH PROFILE FROM SUPABASE
+    const { data: profileData, error: profileError } = await supabase
+      .from("student_profiles")
+      .select("*")
+      .eq("email", user.email)
+      .maybeSingle();
 
-if (profileError) {
-  console.log(profileError);
-  alert("Profile load failed");
-  return;
-}
+    if (profileError) {
+      console.log(profileError);
+      alert("Profile load failed");
+      return;
+    }
 
-if (!profileData) {
-  alert("Profile not found. Please complete registration.");
-  return;
-}
+    if (!profileData) {
+      alert("Profile not found. Please complete registration.");
+      return;
+    }
 
-// ✅ Save for dashboard
-localStorage.setItem("studentData", JSON.stringify(profileData));
+    // ✅ Save for dashboard
+    localStorage.setItem("studentData", JSON.stringify(profileData));
 
 
 

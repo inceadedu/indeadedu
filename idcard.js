@@ -1,17 +1,75 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
-  // =====================
-  // STUDENT DATA LOAD
-  // =====================
-  const data = JSON.parse(localStorage.getItem("studentData"));
+  const supabaseUrl = "https://ljwaezduqvuxhyhcyruy.supabase.co";
+  const supabaseKey = "sb_publishable_3I9rJGQ5Pg0NwOxCTRsy7g_p9psbzzF";
 
-  if (data) {
-    const nameEl = document.getElementById("cardName");
-    if (nameEl) nameEl.innerText = data.name.toUpperCase();
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-    const photoEl = document.getElementById("cardPhoto");
-    if (photoEl && data.image) photoEl.src = data.image;
+  // logged user
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    alert("User not logged in");
+    window.location.href = "login.html";
+    return;
   }
+
+  // profile load
+  const { data, error } = await supabase
+    .from("student_profiles")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+  if (error) {
+    console.log(error);
+    alert("Profile load failed");
+    return;
+  }
+
+  // NAME
+  document.getElementById("cardName").innerText =
+    data.name.toUpperCase();
+
+  // PHOTO
+  if (data.image) {
+    document.getElementById("cardPhoto").src = data.image;
+  }
+
+  // ROLL NO
+  document.getElementById("cardRoll").innerText =
+    data.roll_no || "N/A";
+
+  // FIN NO
+  document.getElementById("cardFin").innerText =
+    data.fin_no || "N/A";
+
+  // ISSUE DATE
+  if (data.issue_date) {
+
+    const date = new Date(data.issue_date);
+
+    const formatted =
+      (date.getMonth() + 1).toString().padStart(2, "0") +
+      "/" +
+      date.getFullYear();
+
+    document.getElementById("cardIssueDate").innerText =
+      formatted;
+  }
+
+if (data.valid_date) {
+
+  const date = new Date(data.valid_date);
+
+  const formatted =
+    (date.getMonth()+1).toString().padStart(2,"0") +
+    "/" +
+    date.getFullYear();
+
+  document.getElementById("cardValidDate").innerText =
+    formatted;
+}
 
   // =====================
   // DOWNLOAD LOGIC
@@ -74,3 +132,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+

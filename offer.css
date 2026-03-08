@@ -26,14 +26,14 @@ body {
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
 .download-btn:hover {
     background-color: #0052a3;
     transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 .download-btn:disabled {
@@ -50,58 +50,62 @@ body {
 }
 
 .offer-divider {
-  border: none;
-  border-top: 1.5px solid #000;
-  margin: 6px 0 14px 0;
-  width: 100%;
+    border: none;
+    border-top: 1.5px solid #000;
+    margin: 6px 0 14px 0;
+    width: 100%;
 
 }
 
 .offer-title {
-  display: inline-block;
+    display: inline-block;
 
-  padding-bottom: 6px;
+    padding-bottom: 6px;
 
-  border-bottom: 2px solid #000;   /* ✅ underline */
+    border-bottom: 2px solid #000;
+    /* ✅ underline */
 
-  position: relative;
+    position: relative;
 
-  top: 30px;
-  right: 99px;                    /* 👈 थोड़ा left shift */
+    top: 30px;
+    right: 99px;
+    /* 👈 थोड़ा left shift */
 }
 
 .letter-heading {
-  margin-top: 8px;                 /* 👈 Dear से नीचे */
-  margin-bottom: 12px;
+    margin-top: 8px;
+    /* 👈 Dear से नीचे */
+    margin-bottom: 12px;
 }
 
 
 
 @media screen and (max-width: 768px) {
-  .offer-title {
-    left: -60px;
-  }
+    .offer-title {
+        left: -60px;
+    }
 }
 
 
 
 
 .offer-with-line {
-  display: inline-block;   /* 👈 heading ke size jitna */
-  position: relative;
-  padding-bottom: 6px;
+    display: inline-block;
+    /* 👈 heading ke size jitna */
+    position: relative;
+    padding-bottom: 6px;
 }
 
 .offer-with-line::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
-  width: 100%;
-  height: 0;
+    width: 100%;
+    height: 0;
 
-  border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 
@@ -112,42 +116,43 @@ body {
 /* Page Layout */
 .page {
     width: 210mm;
+    min-height: 297mm;
     height: auto;
-    padding: 12mm 18mm;
+    padding: 12mm 18mm 25mm 18mm;
     background-color: white;
     position: relative;
     margin: 0 auto;
-    /* overflow: hidden; */
+    page-break-after: always;
+    overflow: hidden;
 }
 
 
 .page:last-child {
-    page-break-before: auto;
-    break-before: auto;
+    page-break-after: auto;
 }
 
 /* Header Section */
 .header {
     text-align: center;
-    margin: 0;
+    margin: -12mm -18mm 10px -18mm;
     padding: 0;
-    width: 100%;
+    width: calc(100% + 36mm);
 }
 
 .header-image {
-    max-width: 100%;
+    /* max-width: 100%; */
     width: 100%;
-    height: 130px;
-    object-fit: contain;
+    height: 100px;
+    object-fit: cover;
     display: block;
     margin: 0 auto;
 
-    
+
 }
 
 /* Content Area */
 .content {
-    font-size: 12pt;
+    font-size: 10pt;
     line-height: 1.15;
     color: #000;
     min-height: 100%;
@@ -200,9 +205,9 @@ body {
 
 /* Paragraphs */
 .para {
-    margin-bottom: 8px;
-    font-size: 12pt;
-    line-height: 1.15;
+    margin-bottom: 6px;
+    font-size: 10pt;
+    line-height: 1.2;
     text-align: justify;
 }
 
@@ -232,9 +237,9 @@ body {
 }
 
 .admission-table td {
-    padding: 6px 8px;
+    padding: 5px 7px;
     border: 1px solid #000;
-    font-size: 12pt;
+    font-size: 10pt;
     vertical-align: top;
     line-height: 1.15;
 }
@@ -260,7 +265,8 @@ body {
     font-size: 12pt;
     font-weight: bold;
     position: relative;
-    left: 275px;
+    text-align: center;
+    left: 0;
     text-decoration: underline;
 }
 
@@ -282,14 +288,14 @@ body {
     border: 1px solid #000;
     padding: 6px 8px;
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 10pt;
     line-height: 1.15;
 }
 
 .fees-table td {
     border: 1px solid #000;
     padding: 5px 8px;
-    font-size: 12pt;
+    font-size: 10pt;
     line-height: 1.15;
 }
 
@@ -388,7 +394,7 @@ body {
 
 .sign-label {
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 10pt;
     display: block;
     margin-bottom: 3px;
 }
@@ -425,9 +431,9 @@ body {
 /* Page Number */
 .page-number {
     position: absolute;
-    bottom: 15mm;
-    right: 25mm;
-    font-size: 12pt;
+    bottom: 10mm;
+    right: 18mm;
+    font-size: 11pt;
     color: #000;
 }
 
@@ -449,13 +455,13 @@ body {
 
     .page {
         margin: 0;
-       /* break-after: page;
-        page-break-after: always; */
+        /* break-after: page; */
+        page-break-after: always;
     }
 
     .page:last-child {
         page-break-after: auto;
-        break-after: auto;
+        /* break-after: auto; */
     }
 }
 
@@ -509,19 +515,19 @@ body {
 
 @media screen and (max-width: 768px) {
 
-  .pdf-container {
-    width: 100%;
-    box-shadow: none;
-  }
+    .pdf-container {
+        width: 100%;
+        box-shadow: none;
+    }
 
-  .page {
-    width: 100%;
-    padding: 12mm 12mm;
-  }
+    .page {
+        width: 100%;
+        padding: 12mm 12mm;
+    }
 
-  .header-image {
-    height: 60px;
-  }
+    .header-image {
+        height: 60px;
+    }
 
 }
 
@@ -529,21 +535,39 @@ body {
 
 @media screen and (max-width: 768px) {
 
-  .name-line {
-    margin-top: 14px;
-  }
+    .name-line {
+        margin-top: 14px;
+    }
 
-  .passport-dob-row {
-    margin-bottom: 14px;
-  }
+    .passport-dob-row {
+        margin-bottom: 14px;
+    }
 
 }
 
 
 @media screen and (max-width: 768px) {
 
-  .offer-divider {
-    margin: 6px 0 12px 0;
-  }
+    .offer-divider {
+        margin: 6px 0 12px 0;
+    }
 
 }
+
+
+
+/* @media screen and (max-width:768px){
+
+  .page{
+    position: relative;
+    min-height: 100vh;   /* page height fix */
+  /* }
+
+  .page-number{
+    position: absolute;
+    bottom: 1px;        /* page ke niche */
+    /* right: 15px;
+    font-size: 10pt; */
+  /* }
+
+}  */

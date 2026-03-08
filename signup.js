@@ -198,79 +198,107 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // Form submission
-registrationForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  registrationForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // ✅ ALWAYS declare at top
-  let photoSrc = null;
+    // ✅ ALWAYS declare at top
+    let photoSrc = null;
 
-  // PHOTO CHECK
-  if (!photoInput.files || photoInput.files.length === 0) {
-    alert("Please upload your photo before registration");
-    photoInput.click();
-    return;
-  }
+    // PHOTO CHECK
+    if (!photoInput.files || photoInput.files.length === 0) {
+      alert("Please upload your photo before registration");
+      photoInput.click();
+      return;
+    }
 
-  // PHOTO SRC
-  const imgTag = photoPreview.querySelector("img");
-  if (imgTag) {
-    photoSrc = imgTag.src;
-  }
+    // PHOTO SRC
+    const imgTag = photoPreview.querySelector("img");
+    if (imgTag) {
+      photoSrc = imgTag.src;
+    }
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  if (!email || !password) {
-    alert("Email & password required");
-    return;
-  }
 
-  if (password.length < 6) {
-    alert("Password must be at least 6 characters");
-    return;
-  }
 
-  // 🔐 AUTH SIGNUP
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password
-  });
+    const rollNo = document.getElementById("rollNo").value;
+    const finNo = document.getElementById("finNo").value;
+    const issueDate = document.getElementById("issueDate").value;
+    const validDate = document.getElementById("validDate").value;
 
-  if (error) {
-    alert(error.message);
-    return;
-  }
 
-  const userId = data.user.id;
 
-  // 📦 INSERT PROFILE
-  const { error: profileError } = await supabase
-    .from("student_profiles")
-    .insert({
-      id: userId,
-      name: document.getElementById("studentName").value,
+
+
+
+    if (!email || !password) {
+      alert("Email & password required");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    // 🔐 AUTH SIGNUP
+    const { data, error } = await supabase.auth.signUp({
       email,
-      dob: document.getElementById("dob").value || null,
-      passport: document.getElementById("passportNo").value,
-      program: document.getElementById("programType").options[
-        document.getElementById("programType").selectedIndex
-      ].text,
-      course: document.getElementById("course").options[
-        document.getElementById("course").selectedIndex
-      ].text,
-      duration: document.getElementById("courseDuration").value,
-      image: photoSrc   // ✅ NOW ALWAYS DEFINED
+      password
     });
 
-  if (profileError) {
-    console.log(profileError);
-    alert("Profile save failed");
-    return;
-  }
+    if (error) {
+      alert(error.message);
+      return;
+    }
 
-  alert("Signup completed successfully");
-  window.location.href = "login.html";
-});
+    const userId = data.user.id;
+
+    // 📦 INSERT PROFILE
+    const { error: profileError } = await supabase
+      .from("student_profiles")
+      .insert({
+        id: userId,
+        name: document.getElementById("studentName").value,
+        email,
+        dob: document.getElementById("dob").value || null,
+        passport: document.getElementById("passportNo").value,
+
+
+        roll_no: rollNo,
+        fin_no: finNo,
+        issue_date: issueDate,
+        valid_date: validDate,
+
+        program: document.getElementById("programType").options[
+          document.getElementById("programType").selectedIndex
+        ].text,
+        course: document.getElementById("course").options[
+          document.getElementById("course").selectedIndex
+        ].text,
+        duration: document.getElementById("courseDuration").value,
+        image: photoSrc   // ✅ NOW ALWAYS DEFINED
+      });
+
+    if (profileError) {
+      console.log(profileError);
+      alert("Profile save failed");
+      return;
+    }
+
+
+localStorage.setItem("studentData", JSON.stringify({
+  name: document.getElementById("studentName").value,
+  image: photoSrc,
+  rollNo: rollNo,
+  finNo: finNo,
+  issueDate: issueDate
+}));
+
+    alert("Signup completed successfully");
+    window.location.href = "login.html";
+  });
 
 
 });
