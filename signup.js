@@ -18,6 +18,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       { value: "mif", label: "Master in Finance" },
       { value: "mba", label: "MBA" }
     ],
+
+    diploma_courses: [   // ✅ NEW CATEGORY
+      { value: "dhm", label: "Diploma in Hospitality Management" }
+    ],
+
     executive_masters: [
       { value: "gemba", label: "Global Executive MBA" },
       { value: "gemba_flex", label: "Global Executive MBA Flex" },
@@ -49,6 +54,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Risk Management"
       ]
     },
+
+    dhm: {
+      duration: "1 Year",
+      subjects: [
+        "Food Production",
+        "Food & Beverage Service",
+        "Front Office Management",
+        "Housekeeping",
+        "Communication Skills",
+        "Hospitality Management Basics"
+      ]
+    },
+
     mba: {
       duration: "10 Months",
       subjects: [
@@ -99,6 +117,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Executive Leadership"
       ]
     }
+
+
+
+
+
   };
 
 
@@ -243,29 +266,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // 🔐 AUTH SIGNUP
-const { data, error } = await supabase.auth.signUp({
-  email,
-  password
-});
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
-if (error) {
-  alert(error.message);
-  return;
-}
+    if (error) {
+      alert(error.message);
+      return;
+    }
 
-// 🔥 FIX
-if (!data.user) {
-  alert("Signup successful! Please login.");
-  window.location.href = "login.html";
-  return;
-}
+    // 🔥 FIX
+    if (!data.user) {
+      alert("Signup successful! Please login.");
+      window.location.href = "login.html";
+      return;
+    }
 
-const userId = data.user.id;
+    const userId = data.user.id;
 
-if (!userId) {
-  alert("Signup failed. Please check email confirmation.");
-  return;
-}
+    if (!userId) {
+      alert("Signup failed. Please check email confirmation.");
+      return;
+    }
 
     // 📦 INSERT PROFILE
     const { error: profileError } = await supabase
@@ -300,13 +323,13 @@ if (!userId) {
     }
 
 
-// localStorage.setItem("studentData", JSON.stringify({
-//   name: document.getElementById("studentName").value,
-//   image: photoSrc,
-//   rollNo: rollNo,
-//   finNo: finNo,
-//   issueDate: issueDate
-// }));
+    // localStorage.setItem("studentData", JSON.stringify({
+    //   name: document.getElementById("studentName").value,
+    //   image: photoSrc,
+    //   rollNo: rollNo,
+    //   finNo: finNo,
+    //   issueDate: issueDate
+    // }));
 
     alert("Signup completed successfully");
     window.location.href = "login.html";
