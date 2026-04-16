@@ -80,27 +80,11 @@ function setText(id, value) {
 }
 
 
-
-// ===============================
-// PDF DOWNLOAD
-// ===============================
 // document.getElementById("downloadPDF")?.addEventListener("click", async () => {
 
-//   // 🔥 ONLY grab pages, not whole container
-//   const pages = document.querySelectorAll("#pdfContent .page");
+//   const element = document.getElementById("pdfContent");
 
-//   if (!pages.length) {
-//     alert("Pages not found");
-//     return;
-//   }
-
-//   // temp wrapper
-//   const wrapper = document.createElement("div");
-
-//   pages.forEach(p => wrapper.appendChild(p.cloneNode(true)));
-
-//   // wait for images
-//   const imgs = wrapper.querySelectorAll("img");
+//   const imgs = element.querySelectorAll("img");
 //   await Promise.all([...imgs].map(img => {
 //     if (img.complete) return;
 //     return new Promise(res => img.onload = img.onerror = res);
@@ -109,8 +93,6 @@ function setText(id, value) {
 //   html2pdf().set({
 //     margin: 0,
 //     filename: "Offer_Letter.pdf",
-
-//     image: { type: "jpeg", quality: 0.98 },
 
 //     html2canvas: {
 //       scale: 2,
@@ -124,44 +106,33 @@ function setText(id, value) {
 //     },
 
 //     pagebreak: {
-//       mode: ["css"],
-//       before: ".page"
+//       mode: ["avoid-all"]
 //     }
 
-//   }).from(wrapper).save();
+//   }).from(element).save();
 
 // });
 
-document.getElementById("downloadPDF")?.addEventListener("click", async () => {
 
-  const element = document.getElementById("pdfContent");
+document.getElementById("downloadPDF")?.addEventListener("click", () => {
 
-  const imgs = element.querySelectorAll("img");
-  await Promise.all([...imgs].map(img => {
-    if (img.complete) return;
-    return new Promise(res => img.onload = img.onerror = res);
-  }));
+  // 👉 dynamic file name (user name + date)
+  const name = document.getElementById("offerName")?.innerText || "Offer";
+  const fileName = `Offer_Letter_${name}.pdf`;
 
-  html2pdf().set({
-    margin: 0,
-    filename: "Offer_Letter.pdf",
+  // 👉 set document title (PDF name)
+  document.title = fileName;
 
-    html2canvas: {
-      scale: 2,
-      useCORS: true
-    },
+  // 👉 PDF mode ON
+  document.body.classList.add("pdf-mode");
 
-    jsPDF: {
-      unit: "mm",
-      format: "a4",
-      orientation: "portrait"
-    },
+  // 👉 print
+  window.print();
 
-    pagebreak: {
-      mode: ["avoid-all"]
-    }
-
-  }).from(element).save();
+  // 👉 वापस normal
+  setTimeout(() => {
+    document.body.classList.remove("pdf-mode");
+    document.title = "Offer Letter";
+  }, 1000);
 
 });
-

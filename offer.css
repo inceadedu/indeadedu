@@ -116,16 +116,13 @@ body {
 /* Page Layout */
 .page {
     width: 210mm;
-    min-height: 297mm;
-    height: auto;
-    padding: 12mm 18mm 25mm 18mm;
+    padding: 12mm 18mm 20mm 18mm; /* 🔥 bottom padding कम किया */
     background-color: white;
     position: relative;
     margin: 0 auto;
     page-break-after: always;
     overflow: hidden;
 }
-
 
 .page:last-child {
     page-break-after: auto;
@@ -439,6 +436,12 @@ body {
 
 /* Print Styles */
 @media print {
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
     body {
         margin: 0;
         padding: 0;
@@ -449,21 +452,25 @@ body {
     }
 
     .pdf-container {
-        max-width: 100%;
-        box-shadow: none;
+        width: 210mm;
     }
 
     .page {
+        width: 210mm;
+        height: 297mm;   /* 🔥 FIXED HEIGHT */
+        padding: 12mm 15mm 15mm 15mm; /* 🔥 balanced padding */
         margin: 0;
-        /* break-after: page; */
+        box-shadow: none;
+        overflow: hidden;
         page-break-after: always;
     }
 
     .page:last-child {
         page-break-after: auto;
-        /* break-after: auto; */
     }
 }
+
+
 
 /* Responsive Design */
 @media screen and (max-width: 900px) {
@@ -561,13 +568,13 @@ body {
   .page{
     position: relative;
     min-height: 100vh;   /* page height fix */
-  /* }
+/* }
 
   .page-number{
     position: absolute;
     bottom: 1px;        /* page ke niche */
-    /* right: 15px;
+/* right: 15px;
     font-size: 10pt; */
-  /* }
+/* }
 
 }  */
