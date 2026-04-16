@@ -223,6 +223,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Form submission
   registrationForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const submitBtn = document.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Processing...";
 
     // ✅ ALWAYS declare at top
     let photoSrc = null;
@@ -275,12 +278,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (error) {
       console.log("SIGNUP ERROR 👉", error);
       alert(error.message);
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Complete Registration";
       return;
     }
 
     // 🔥 FIX
-    if (!data.user) {
-      alert("Signup successful! Please login.");
+    const user = data.user;
+
+    if (!user) {
+      alert("Signup done! Please check email or login.");
       window.location.href = "login.html";
       return;
     }
@@ -322,6 +329,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (profileError) {
       console.log("ERROR 👉", profileError);
       alert(profileError.message);
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Complete Registration";
       return;
     }
 
@@ -332,7 +341,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     //   finNo: finNo,
     //   issueDate: issueDate
     // }));
-
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Complete Registration";
     alert("Signup completed successfully");
     window.location.href = "login.html";
   });

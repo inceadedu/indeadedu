@@ -178,7 +178,7 @@ body {
     color: white;
 }
 .barcode-container {
-    margin-top: -16px;
+    margin-top: -20px;
     margin-bottom: 8px;
     display: flex;
     justify-content: center;   /* center karega */
