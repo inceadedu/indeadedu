@@ -242,7 +242,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
-
+    const applicationId = document.getElementById("applicationId").value;
+    const commencementDate = document.getElementById("commencementDate").value;
 
 
     const rollNo = document.getElementById("rollNo").value;
@@ -272,6 +273,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     if (error) {
+      console.log("SIGNUP ERROR 👉", error);
       alert(error.message);
       return;
     }
@@ -299,7 +301,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         email,
         dob: document.getElementById("dob").value || null,
         passport: document.getElementById("passportNo").value,
-
+        application_id: applicationId,       // 👈 ADD THIS
+        commencement: commencementDate,      // 👈 ADD THIS
 
         roll_no: rollNo,
         fin_no: finNo,
@@ -317,11 +320,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
     if (profileError) {
-      console.log(profileError);
-      alert("Profile save failed");
+      console.log("ERROR 👉", profileError);
+      alert(profileError.message);
       return;
     }
-
 
     // localStorage.setItem("studentData", JSON.stringify({
     //   name: document.getElementById("studentName").value,

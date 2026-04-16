@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     .maybeSingle();
 
   console.log("PROFILE DATA 👉", data);
+  console.log("Application ID 👉", data.application_id);
+  console.log("Commencement 👉", data.commencement);
 
   if (error || !data) {
     alert("Offer data not found. Please signup again.");
@@ -60,11 +62,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // 6️⃣ ACCEPTANCE PAGE
- setText("acceptNameText", data.name);
-setText("acceptNameSign", data.name);
+  setText("acceptNameText", data.name);
+  setText("acceptNameSign", data.name);
 
-setText("acceptPassportText", data.passport);
-setText("acceptPassportSign", data.passport);
+  setText("acceptPassportText", data.passport);
+  setText("acceptPassportSign", data.passport);
 
   setText("acceptCourse", data.course);
 });
