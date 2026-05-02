@@ -26,10 +26,6 @@ function renderMenu() {
   if (loggedIn === "true") {
     authMenu.innerHTML = `
       <a href="dashboard.html">Dashboard</a>
-      <a href="#">Enrolled Course</a>
-      <a href="#">Parents</a>
-      <a href="#">Events</a>
-      <a href="#">Transport</a>
       <a href="offer.html">Offer Letter</a>
       <a href="idcard.html">ID Card</a>
       <a href="#" onclick="logout()">Logout</a>
