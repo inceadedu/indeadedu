@@ -22,7 +22,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .left-section {
@@ -43,7 +43,7 @@ body {
 }
 
 .menu-icon:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .user-profile img {
@@ -65,14 +65,15 @@ body {
   background: #1e3a8a;
   z-index: 999;
   overflow-y: auto;
-  box-shadow: 4px 0 16px rgba(0,0,0,0.2);
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
 }
 
 .main-nav-dropdown.open {
   display: block;
 }
-.main-nav-dropdown.show{
-display:block;
+
+.main-nav-dropdown.show {
+  display: block;
 }
 
 .main-nav-dropdown ul {
@@ -93,20 +94,20 @@ display:block;
 
 .main-nav-dropdown ul li a:hover,
 .main-nav-dropdown ul li a.active {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
   border-left-color: #60a5fa;
 }
 
 /* Nested dropdown */
 .main-nav-dropdown .dropdown-menu {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   display: none;
   padding: 0;
 }
 
-.main-nav-dropdown .dropdown.open > .dropdown-menu,
-.main-nav-dropdown .enrolled-toggle.open + .dropdown-menu {
+.main-nav-dropdown .dropdown.open>.dropdown-menu,
+.main-nav-dropdown .enrolled-toggle.open+.dropdown-menu {
   display: block;
 }
 
@@ -138,14 +139,14 @@ display:block;
   display: block;
 }
 
-.content-section > h1 {
+.content-section>h1 {
   font-size: 26px;
   font-weight: 700;
   color: #111827;
   margin-bottom: 4px;
 }
 
-.content-section > p {
+.content-section>p {
   font-size: 13px;
   color: #6b7280;
   margin-bottom: 24px;
@@ -156,13 +157,13 @@ display:block;
   background: white;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
   font-size: 15px;
   color: #374151;
   line-height: 1.7;
 }
 
-.content-card p + p {
+.content-card p+p {
   margin-top: 8px;
 }
 
@@ -188,7 +189,7 @@ display:block;
 
 .dashboard-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .dashboard-card h3 {
@@ -226,7 +227,7 @@ display:block;
   background: white;
   border-radius: 14px;
   padding: 28px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
 .calendar-header {
@@ -346,9 +347,17 @@ display:block;
   display: inline-block;
 }
 
-.legend-marker.event { background: #f59e0b; }
-.legend-marker.exam  { background: #ef4444; }
-.legend-marker.holiday { background: #10b981; }
+.legend-marker.event {
+  background: #f59e0b;
+}
+
+.legend-marker.exam {
+  background: #ef4444;
+}
+
+.legend-marker.holiday {
+  background: #10b981;
+}
 
 /* ===== PROFILE SECTION ===== */
 .profile-form {
@@ -356,7 +365,7 @@ display:block;
   border-radius: 14px;
   padding: 32px;
   max-width: 600px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
 .profile-form h2 {
@@ -441,7 +450,7 @@ display:block;
 
 .form-group input:focus {
   border-color: #1a56db;
-  box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
   background: white;
 }
 
@@ -512,7 +521,7 @@ display:block;
   background: white;
   border-radius: 14px;
   padding: 28px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
 .tt-title {
@@ -533,7 +542,9 @@ display:block;
   line-height: 1.8;
 }
 
-.tt-info p { margin: 0; }
+.tt-info p {
+  margin: 0;
+}
 
 .table-responsive {
   overflow-x: auto;
@@ -628,39 +639,162 @@ display:block;
   }
 }
 
-.calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:12px;
-  margin-top:20px;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  margin-top: 20px;
 }
 
-.day-name{
-  text-align:center;
-  font-weight:700;
-  color:#64748b;
-  padding:10px 0;
+.day-name {
+  text-align: center;
+  font-weight: 700;
+  color: #64748b;
+  padding: 10px 0;
 }
 
-.day-cell{
-  min-height:70px;
-  background:#ffffff;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  font-weight:600;
-  color:#1e293b;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+.day-cell {
+  min-height: 70px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.day-cell.empty{
-  background:transparent;
-  box-shadow:none;
+.day-cell.empty {
+  background: transparent;
+  box-shadow: none;
 }
 
-.day-cell.today{
-  background:#2563eb;
-  color:#fff;
+.day-cell.today {
+  background: #2563eb;
+  color: #fff;
+}
+
+
+/* ===== GLOBAL THEME IMPROVE (SAFE) ===== */
+body {
+  background: #f1f5f9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== HEADER CLEAN ===== */
+.header {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+  padding: 10px 15px;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  padding: 20px;
+}
+
+/* ===== DASHBOARD CARDS (UNCHANGED STRUCTURE, BETTER LOOK) ===== */
+.dashboard-card {
+  border-radius: 12px;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== PROFILE CARD (MAIN FIX) ===== */
+.profile-card {
+  max-width: 400px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* PROFILE IMAGE */
+.profile-card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid #16a34a;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* NAME */
+.profile-card h2 {
+  margin: 10px 0;
+  color: #065f46;
+  font-size: 22px;
+}
+
+/* LABEL TEXT */
+.profile-card p {
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #111827;
+  text-align: left;
+}
+
+/* LABEL BOLD PART */
+.profile-card p b {
+  color: #16a34a;
+}
+
+/* ===== BUTTON (FUTURE SAFE IF ADD EDIT) ===== */
+.profile-card button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-card button:hover {
+  background: #1e40af;
+}
+
+/* ===== CALENDAR CLEAN LOOK ===== */
+.calendar-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* ===== SIDEBAR ===== */
+.main-nav-dropdown {
+  background: #1e3a8a;
+}
+
+.main-nav-dropdown a {
+  color: white;
+}
+
+.main-nav-dropdown a:hover {
+  background: #2563eb;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .profile-card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .dashboard-card {
+    margin-bottom: 10px;
+  }
 }

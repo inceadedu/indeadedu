@@ -9,60 +9,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========= PROFILE AUTO FILL =========
-  const fullName = user.name ? user.name.trim() : "";
-  const parts = fullName.split(" ");
+  document.getElementById("profileName").innerText = user.name || "-";
+  document.getElementById("profileEmail").innerText = user.email || "-";
+  document.getElementById("profileDob").innerText = user.dob || "-";
+  document.getElementById("profilePassport").innerText = user.passport || "-";
+  document.getElementById("profileProgram").innerText = user.program || "-";
+  document.getElementById("profileCourse").innerText = user.course || "-";
+  document.getElementById("profileDuration").innerText = user.duration || "-";
 
-  const firstName = parts[0] || "";
-  const lastName = parts.slice(1).join(" ") || "";
-
-  if (document.getElementById("firstName"))
-    document.getElementById("firstName").value = firstName;
-
-  if (document.getElementById("lastName"))
-    document.getElementById("lastName").value = lastName;
-
-  if (document.getElementById("email"))
-    document.getElementById("email").value = user.email || "";
-
-  // profile image
   if (user.image) {
-    const img1 = document.getElementById("profilePreview");
-    const img2 = document.getElementById("headerProfileImg");
+    const profileImg = document.getElementById("profileImage");
+    if (profileImg) profileImg.src = user.image;
 
-    if (img1) {
-      img1.src = user.image;
-      img1.style.display = "block";
-    }
-
-    if (img2) {
-      img2.src = user.image;
-      img2.style.display = "block";
+    const headerImg = document.getElementById("headerProfileImg");
+    if (headerImg) {
+      headerImg.src = user.image;
+      headerImg.style.display = "block";
     }
   }
 
-  // ========= SECTION NAVIGATION =========
+  // ========= NAVIGATION =========
   const links = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".content-section");
 
   links.forEach(link => {
     link.addEventListener("click", function (e) {
 
-      const page = this.dataset.page;
-
-      // HOME external page
-      if (this.getAttribute("href") === "index.html") {
-        return; // normal link allow
-      }
+      if (this.getAttribute("href") === "index.html") return;
 
       e.preventDefault();
+
+      const page = this.dataset.page;
 
       sections.forEach(sec => sec.classList.remove("active"));
 
       const target = document.getElementById(page);
       if (target) target.classList.add("active");
-
-      const nav = document.getElementById("main-nav-dropdown");
-      if (nav) nav.classList.remove("show");
     });
   });
 
@@ -76,45 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ========= SAVE PROFILE =========
-  const saveBtn = document.getElementById("saveProfile");
-
-  if (saveBtn) {
-    saveBtn.addEventListener("click", () => {
-
-      const updatedName =
-        document.getElementById("firstName").value + " " +
-        document.getElementById("lastName").value;
-
-      user.name = updatedName.trim();
-      user.email = document.getElementById("email").value;
-
-      localStorage.setItem("studentData", JSON.stringify(user));
-
-      alert("Profile Updated Successfully");
-    });
-  }
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* ========= MENU DROPDOWN ========= */
+  // ========= DROPDOWN =========
   const enrolledBtn = document.querySelector(".enrolled-toggle");
   const dropdown = document.querySelector(".dropdown");
 
   if (enrolledBtn && dropdown) {
-    enrolledBtn.addEventListener("click", function(e){
+    enrolledBtn.addEventListener("click", function (e) {
       e.preventDefault();
       dropdown.classList.toggle("open");
     });
   }
 
-  /* ========= CALENDAR ========= */
+  // ========= CALENDAR =========
   const calendarGrid = document.querySelector(".calendar-grid");
   const monthTitle = document.querySelector(".calendar-header h2");
 
-  if(calendarGrid && monthTitle){
+  if (calendarGrid && monthTitle) {
 
     const date = new Date();
     const year = date.getFullYear();
@@ -134,45 +93,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     calendarGrid.innerHTML = "";
 
-    days.forEach(day=>{
+    days.forEach(day => {
       calendarGrid.innerHTML += `<div class="day-name">${day}</div>`;
     });
 
-    for(let i=0;i<firstDay;i++){
+    for (let i = 0; i < firstDay; i++) {
       calendarGrid.innerHTML += `<div class="day-cell empty"></div>`;
     }
 
-   for(let d=1; d<=totalDays; d++){
+    for (let d = 1; d <= totalDays; d++) {
 
-  let cls = "day-cell";
+      let cls = "day-cell";
 
-  if(
-    d === date.getDate() &&
-    month === new Date().getMonth() &&
-    year === new Date().getFullYear()
-  ){
-    cls += " today";
+      if (
+        d === date.getDate() &&
+        month === new Date().getMonth() &&
+        year === new Date().getFullYear()
+      ) {
+        cls += " today";
+      }
+
+      calendarGrid.innerHTML += `<div class="${cls}">${d}</div>`;
+    }
   }
-
-  calendarGrid.innerHTML += `<div class="${cls}">${d}</div>`;
-}
-  }
-
-
-const navLinks = document.querySelectorAll(".nav-link");
-const sections = document.querySelectorAll(".content-section");
-
-navLinks.forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const page = this.getAttribute("data-page");
-
-    sections.forEach(sec => sec.classList.remove("active"));
-    document.getElementById(page).classList.add("active");
-  });
-});
-
-
 
 });
